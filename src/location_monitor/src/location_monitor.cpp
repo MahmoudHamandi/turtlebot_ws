@@ -9,6 +9,7 @@
 using std::vector;
 using std::string;
 using location_monitor::LandmarkDistance;
+
 class Landmark {
   public:
     Landmark(string name, double x, double y)
@@ -28,7 +29,7 @@ class LandmarkMonitor {
       double x = msg->pose.pose.position.x;
       double y = msg->pose.pose.position.y;
       LandmarkDistance ld = FindClosest(x,y);
-      //ROS_INFO("x: %f, y: %f", x, y);
+      ROS_INFO("x: %f, y: %f", x, y);
       //ROS_INFO("name: %s, d: %f",ld.name.c_str(), ld.distance);
       landmark_pub_.publish(ld);
       if( ld.distance <=0.5) {
